@@ -1,4 +1,4 @@
-<?php include("core/core_customers.php"); ?>
+<?php include("core/core_room_type.php"); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add Classes</h1>
+                            <h3>Add Room Type</h3>
                         </div>
                       
                     </div>
@@ -53,27 +53,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="full_name">Full Name</label>
-                                    <input type="text" id="full_name" name="full_name" required class="form-control"  value="<?php echo (isset($full_name) ? $full_name : "") ?>">
+                                    <label for="room_type">Room Tyoe</label>
+                                    <input type="text" id="room_type" name="room_type" required class="form-control"  value="<?php echo (isset($room_type) ? $room_type : "") ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email">Email: </label>
-                                    <input type="email" id="email" name="email" required class="form-control" value="<?php echo (isset($email) ? $email : "") ?>">
+                                    <label for="price">Price </label>
+                                    <input type="number" id="price" name="price" required class="form-control" value="<?php echo (isset($price) ? $price : "") ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="mobile">Mobile No: </label>
-                                    <input type="text" id="mobile" name="mobile" required class="form-control"value="<?php echo (isset($mobile) ? $mobile : "") ?>" >
+                                    <label for="description">Description </label>
+                                    <input type="text" id="description" name="description" required class="form-control"value="<?php echo (isset($description) ? $description : "") ?>" >
                                 </div>
-                                <div class="form-group">
-                                    <label for="discount">Discount:</label>
-                                    <input type="text" id="discount" name="discount" required class="form-control" value="<?php echo (isset($discount) ? $discount : "") ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="id_card_no">ID Card No:</label>
-                                    <input type="text" id="id_card_no" name="id_card_no" required class="form-control" value="<?php echo (isset($id_card_no) ? $id_card_no : "") ?>">
-                                </div>
+                                
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -81,9 +74,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="row">
                         <div class="col-12">
                                 <a hidden href="#" class="btn btn-secondary float-right">Back</a>
-                                <input type="submit" name="save" value="Create new Customer"
+                                <input type="submit" name="save" value="Create new Room"
                                     class="btn btn-success float-right" <?php echo (isset($_GET['id']) ? "hidden" : "") ?>>
-                                    <input type="submit" name="update" value="Update Customer"
+                                    <input type="submit" name="update" value="Update Room"
                                     class="btn btn-success float-right" <?php echo (isset($_GET['id']) ? "" : "hidden") ?>>
                             </div>
                         </div>

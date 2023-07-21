@@ -1,2 +1,3 @@
 # hotel_managment_system
-hotel managment sytem 
+
+hotel managment sytem
