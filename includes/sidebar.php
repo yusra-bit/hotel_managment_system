@@ -30,6 +30,27 @@
                         
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-user"></i>
+                        <p>
+                            Room & Reservation
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    
+                    <ul class="nav nav-treeview">
+                       
+                        <li class="nav-item">
+                            <a href="check_in_list.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Check-in</p>
+                            </a>
+                        </li>
+                       
+                        
+                    </ul>
+                </li>
            
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -43,7 +64,7 @@
                     <ul class="nav nav-treeview">
                        
                         <li class="nav-item">
-                            <a href="room_type_list.php" class="nav-link">
+                            <a href="room_list.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Room Types</p>
                             </a>

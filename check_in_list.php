@@ -1,4 +1,4 @@
-<?php include("core/core_rooms.php"); ?>
+<?php include("core/core_reservation.php"); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Room Type</h1>
+                            <h1>Check in</h1>
                         </div>
                         
                     </div>
@@ -53,12 +53,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card card-info">
                    <div class="">
                                 <button 
-                                    class="btn text-white bg-dark text float-right mb-20"><a href="room.php">Add New Room</a></button>
+                                    class="btn text-white bg-dark text float-right mb-20"><a href="customers.php">Add New Customers</a></button>
                                     
                             </div>
                             <br>
                              
-                                    <?php getRooms(); ?>
+                                    <?php getCheckin(); ?>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
