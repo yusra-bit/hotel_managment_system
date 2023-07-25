@@ -21,7 +21,7 @@ if (isset($_POST['save'])) {
 
     
 
-    $query = "INSERT INTO reservation(customer_id, room_id, booking_date, no_people, description) VALUES (?,?,?,?,?)";
+    $query = "INSERT INTO reservation(customer_id, room_id, booking_date, no_people, description,is_checkout) VALUES (?,?,?,?,?,0)";
     /* Prepare statement */
     $stmt = $mysqli->prepare($query);
 
@@ -74,7 +74,7 @@ $no =1;
               INNER JOIN room_type t
               ON r.room_type_id = t.id";
               
-
+             // $checked = $conn->query("SELECT * FROM reservation where status = 0 order by status desc, id asc ");
 
 
    // $query = "SELECT * FROM class cINNER JOIN teacher tON c.teacher_id = t.id";
@@ -93,6 +93,7 @@ $no =1;
 				    <th>Room No</th>
                     <th>Room Type</th>
                     <th>Price</th>
+             
 
              
                     
@@ -111,11 +112,7 @@ $no =1;
                     <td>'.$row['room_no'].'</td>
 					<td>'.$row["room_type"] .'</td>
                     <td>'. $row["price"].'</td>
-                 
-                    
-                    
-                   
-
+                
                     <td class=" py-0 align-middle">
                     <div class="btn-group btn-group-sm">
                         <a href="check_in.php?id='.$row['id'].'" class="btn btn-info">Check in</i></a>
