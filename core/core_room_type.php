@@ -59,7 +59,7 @@ if (isset($_GET['delete'])) {
     }
 
     // merchant information
-    $customer_id = $_GET['delete'];
+    $room_type_id = $_GET['delete'];
 
     $query = "DELETE FROM room_type WHERE id = ?";
     /* Prepare statement */

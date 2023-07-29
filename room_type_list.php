@@ -53,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card card-info">
                    <div class="">
                                 <button 
-                                    class="btn text-white bg-dark text float-right mb-20"><a href="room_type.php">Add New Room</a></button>
+                                    class="btn text-white bg-dark text float-right mb-20"><a href="room_type.php">Add New</a></button>
                                     
                             </div>
                             <br>

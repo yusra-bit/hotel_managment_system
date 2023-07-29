@@ -74,6 +74,7 @@ $no =1;
               INNER JOIN room_type t
               ON r.room_type_id = t.id";
               
+              
              // $checked = $conn->query("SELECT * FROM reservation where status = 0 order by status desc, id asc ");
 
 
@@ -149,16 +150,22 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $room_id = $_GET['id'];
     // the query
-    $query = "SELECT * FROM room WHERE id=".$room_id;
+  
+    $query = "SELECT r.id, t.room_type, r.room_no, t.price 
+    FROM room r 
+    INNER JOIN room_type t
+    ON r.room_type_id = t.id
+     WHERE r.id=".$room_id;
+
     $results = $mysqli->query($query);
    if ($results) {
        $list = mysqli_fetch_array($results);
 
        extract($list);
-      // $room_type= $list['room_type'];
-      $room_id = $list['id'];
+      // $room_type_id = $list['room_type'];
+     // $room_id = $list['id'];
        $room_no = $list['room_no'];
-      // $room_type_id= $list['room_type'];
+       $room_type= $list['room_type'];
        
      
 

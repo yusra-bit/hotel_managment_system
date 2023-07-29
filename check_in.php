@@ -54,8 +54,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <div class="form-group">
                                     <label for="full_name">Customer</label>
-                                    <select name="customer_id" id='customer_id' class="form-control">
-                                    <option selected>Choose the Room</option>
+                                    <select name="customer_id" id='customer_id' class="form-control" >
+                                    <option selected>Select Customer</option>
                                     <?php
                                         $query="SELECT * FROM customers_tbl";
                                         $result=mysqli_query($conn_hotel,$query);
@@ -74,13 +74,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="room_no">Room No: </label>
-                                    <input type="number" id="room_no" name="room_no" required class="form-control" readonly value="<?php echo $row['id']?><?php echo (isset($room_no) ? $room_no: "") ?>"> 
-                                    
+                                    <input type="number" id="room_no" name="room_no" required class="form-control" readonly 
+                                           value="<?php echo (isset($room_no) ? $room_no: "") ?>">                             
                                 </div>
-                          <!--      <div class="form-group">
-                                    <label for="room_no">Room Type: </label>
-                                    <input type="number" id="room_type_id" name="room_type_id" required class="form-control" readonly value="<?php echo (isset($room_type_id) ? $room_type_id : "") ?>">
-                                </div> -->
+
+                               <div class="form-group">
+                                    <label for="room_type">Room Type: </label>
+                                    <input type="text" id="room_type" name="room_type" required class="form-control" readonly
+                                     value="<?php echo (isset($room_type) ? $room_type : "") ?>">
+                                </div>
                                 <div class="form-group">
                                     <label for="booking_date">Booking Date: </label>
                                     <input type="date" id="booking_date" name="booking_date" required class="form-control" >

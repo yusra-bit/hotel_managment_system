@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Checkin</h1>
+                            <h1>CheckIn</h1>
                         </div>
                         
                     </div>

@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h3>Add Room Type</h3>
+                            <h3>Add Order</h3>
                         </div>
                       
                     </div>
@@ -94,7 +94,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="type">order type </label>
-                                    <input type="text" id="type" name="type" required class="form-control" value="<?php echo (isset($type) ? $type : "") ?>"  >
+                                    <select name="type" id="type" class="form-control">
+                                    <option selected>Select order..</option>
+
+                                        <option value="Food" <?php echo (isset($type) && $type == "Food" ? "selected" : "") ?> >Food</option>  
+                                        <option value="Dry cleaning" <?php echo (isset($type) && $type == "Dry cleaning" ? "selected" : "") ?>>Dry cleaning</option>   
+ 
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="price">price</label>
@@ -102,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <div class="form-group">
                                     <label for="note">notes</label>
-                                    <textarea name="note" id="note" cols="12" rows="4" class="form-control" value="<?php echo (isset($note) ? $note : "") ?>"></textarea>
+                                    <textarea name="note" id="note" cols="12" rows="4" class="form-control" ><?php echo (isset($note) ? $note : "") ?></textarea>
                                 </div>
                                 
                             </div>

@@ -100,7 +100,7 @@ function getRooms()
     // the query
    // $query = "SELECT * from student";
 $no =1;
-    $query = "SELECT r.id, t.room_type, r.room_no from room r 
+    $query = "SELECT r.id, t.room_type, r.room_no, t.price, t.description from room r 
               INNER JOIN room_type t
               ON r.room_type_id = t.id";
 
@@ -119,6 +119,8 @@ $no =1;
   <th>#</th>
 				    <th>Room Type</th>
                     <th>Room No</th>
+                    <th>Description</th> 
+                    <th>Price </th>
              
                     
 
@@ -135,6 +137,8 @@ $no =1;
 
                     <td>'.$row['room_type'].'</td>
 					<td>' . $row["room_no"] .'</td>
+					<td>' . $row["description"] .'</td>
+                    <td>' .$row['price'].'</td>
                 
                     
 
@@ -181,7 +185,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
        $list = mysqli_fetch_array($results);
 
        extract($list);
-       $room_type_id = $list['room_type_id'];
+       $room_type_id = $list['room_type'];
        $room_no = $list['room_no'];
      
 

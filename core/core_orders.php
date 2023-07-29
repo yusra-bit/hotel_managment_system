@@ -50,6 +50,45 @@ $mysqli->close();
 
 }
 
+if (isset($_GET['delete'])) {
+    $trigger_error = 0;
+    $mysqli = $conn_hotel;
+
+    // output any connection error
+    if ($mysqli->connect_error) {
+        die('Error : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    }
+
+    // merchant information
+    $oid = $_GET['delete'];
+
+    $query = "DELETE FROM tbl_order WHERE id = ?";
+    /* Prepare statement */
+    $stmt = $mysqli->prepare($query);
+
+    if ($stmt === false) {
+        trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
+    }
+
+    /* Bind parameters. TYpes: s = string, i = integer, d = double,  b = blob */
+    $stmt->bind_param(
+        'i',
+        $oid
+    );
+
+    //execute the query
+    if ($stmt->execute()) {
+        //if saving success
+
+        echo "Order deleted successfully!'";
+    } else {
+        //if unable to create new record
+        echo  'There has been an error, please try again.<pre>' . $mysqli->error . '</pre><pre>' . $query . '</pre>';
+    }
+    //close database connection
+    $mysqli->close();
+}
+
 function getOrders()
 {
 
