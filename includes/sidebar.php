@@ -126,13 +126,13 @@
                     <ul class="nav nav-treeview">
                        
                         <li class="nav-item">
-                            <a href="room_list.php" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="fa fa-cog nav-icon"></i>
                                 <p>Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="room_type_list.php" class="nav-link">
+                            <a href="users_list.php" class="nav-link">
                                 <i class="fa fa-users nav-icon"></i>
                                 <p>Users</p>
                             </a>

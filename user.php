@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h3>Add Room Type</h3>
+                            <h3>Add User </h3>
                         </div>
                       
                     </div>
@@ -53,8 +53,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" name="username" required class="form-control" >
+                                    <label for="full_name">Full Name</label>
+                                    <input type="text" id="full_name" name="full_name" required class="form-control" >
                                 </div>
 
                                 <div class="form-group">
@@ -63,10 +63,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="email">phone </label>
+                                    <input type="number" id="phone" name="phone" required class="form-control">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="password">password </label>
                                     <input type="text" id="password" name="password" required class="form-control"  >
                                 </div>
-                                
+                               
+
+                                <div class="form-group">
+                                    <label for="role">role </label>
+                                    <select name="role" id="role" class="form-control">
+                                        <option value="admin">admin</option>
+                                        <option value="cashier">cashier</option>
+                                        <option value="accountant">accountant</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="status">status </label>
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="blocked">Blocked</option>
+                                        <option value="active">Active</option>
+                                    </select>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -74,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="row">
                         <div class="col-12">
                                 <a hidden href="#" class="btn btn-secondary float-right">Back</a>
-                                <input type="submit" name="save" value="Create new Room"
+                                <input type="submit" name="save" value="Create"
                                     class="btn btn-success float-right" >
                             </div>
                         </div>
