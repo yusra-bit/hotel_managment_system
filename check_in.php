@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.html"); ?>
+        <?php include("includes/navbar.php"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -54,6 +54,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                             <div class="form-group">
                                     <label for="full_name">Customer</label>
+                                    
+
                                     <select name="customer_id" id='customer_id' class="form-control" >
                                     <option selected>Select Customer</option>
                                     <?php
@@ -74,6 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="room_no">Room No: </label>
+                                    <input type="text" name ="room_id" hidden value="<?php echo (isset($room_id) ? $room_id : ""); ?>">
                                     <input type="number" id="room_no" name="room_no" required class="form-control" readonly 
                                            value="<?php echo (isset($room_no) ? $room_no: "") ?>">                             
                                 </div>

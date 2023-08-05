@@ -1,4 +1,4 @@
-<?php include("core/core_rooms.php"); ?>
+<?php include("core/core_bookingHistory.php"); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -18,8 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.php"); ?>
-
+        <?php include("includes/navbar.html"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -33,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Room</h1>
+                            <h1>CheckIn</h1>
                         </div>
                         
                     </div>
@@ -52,14 +51,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card -->
 
                             <div class="card card-info">
-                   <div class="">
-                                <button 
-                                    class="btn text-white bg-dark text float-right mb-20"><a href="room.php">Add New</a></button>
-                                    
-                            </div>
+                   
                             <br>
                              
-                                    <?php getRooms(); ?>
+                                    <?php getBookingHistory(); ?>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.html"); ?>
+        <?php include("includes/navbar.php"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->

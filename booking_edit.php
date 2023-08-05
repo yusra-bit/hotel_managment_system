@@ -1,4 +1,4 @@
-<?php include("core/core_orders.php"); ?>
+<?php include("core/core_bookingHistory.php"); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.php"); ?>
+        <?php include("includes/navbar.html"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h3>Add Order</h3>
+                            <h3>EDIT BOOKING DETAILS</h3>
                         </div>
                       
                     </div>
@@ -46,14 +46,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="card ">
                            
 
-                            <div class="alert" style="length:2px;">
-                                <a class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-                                <?php echo $message; ?>
-                            </div>
+                          
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="customer_id">customer</label>
+                                    <label for="customer_id">Customer</label>
                                     <select name="customer_id" id='customer_id' class="form-control">
                                     <option selected>Select..</option>
                                     <?php
@@ -67,13 +64,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <?php
                                            }
                                      }
-
                                 ?>            
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="booking_date">Booking date</label>
+                                    <input type="date" name="booking_date" class="form-control" value=" <?php echo (isset($booking_date) && $booking_date == $row['id'] ? "selected" : "") ?>">
+                                </div>
 
                                 <div class="form-group">
-                                    <label for="room_id">room </label>
+                                    <label for="room_id">Room </label>
                                     <select name="room_id" id='room_id' class="form-control">
                                     <option selected>Select..</option>
                                     <?php
@@ -91,24 +91,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 ?>            
                                     </select>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="type">order type </label>
-                                    <select name="type" id="type" class="form-control">
-                                    <option selected>Select order..</option>
-
-                                        <option value="Food" <?php echo (isset($type) && $type == "Food" ? "selected" : "") ?> >Food</option>  
-                                        <option value="Dry cleaning" <?php echo (isset($type) && $type == "Dry cleaning" ? "selected" : "") ?>>Dry cleaning</option>   
- 
+                                    <label for="no_people">Number of People </label>
+                                    <select name="no_people" id="no_people" class="form-control">
+                                    <option value="1" <?php echo (isset($no_people) && $no_people == "1" ? "selected" : "") ?>>1</option>  
+                                    <option value="2" <?php echo (isset($no_people) && $no_people == "2" ? "selected" : "") ?>>2</option>
+                                    <option value="2" <?php echo (isset($no_people) && $no_people == "2" ? "selected" : "") ?>>1 with one child</option>  
+                                    <option value="3" <?php echo (isset($no_people) && $no_people == "3" ? "selected" : "") ?>>2 with one child</option>  
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="oprice">price</label>
-                                    <input type="number" id="oprice" name="oprice" required class="form-control" value="<?php echo (isset($price) ? $price : "") ?>" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="note">notes</label>
-                                    <textarea name="note" id="note" cols="12" rows="4" class="form-control" ><?php echo (isset($note) ? $note : "") ?></textarea>
+                                    <label for="description">notes</label>
+                                    <textarea name="description" id="description" cols="12" rows="4" class="form-control" ><?php echo (isset($description) ? $description : "") ?></textarea>
                                 </div>
                                 
                             </div>
@@ -118,10 +112,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="row">
                         <div class="col-12">
                                 <a hidden href="#" class="btn btn-secondary float-right">Back</a>
-                                <input type="submit" name="save" value="Create Order "
-                                    class="btn btn-success float-right" <?php echo (isset($_GET['id']) ? "hidden" : "") ?>>
-                                    <input type="submit" name="update" value="Update Order"
-                                    class="btn btn-success float-right" <?php echo (isset($_GET['id']) ? "" : "hidden") ?>>
+                                    <input type="submit" name="update" value="Update Booking"
+                                    class="btn btn-success float-right">
                             </div>
                         </div>
                         </form>

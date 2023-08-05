@@ -1,4 +1,15 @@
-<?php include("core/core_reservation.php"); ?>
+<?php include("core/core_reservation.php");
+
+$query ="SELECT r.id, r.room_no, rt.room_type, rt.price, ifnull(rs.is_checkout, 1) as is_checkout 
+            from room r 
+            inner JOIN room_type rt on rt.id = r.room_type_id 
+            left join reservation rs on rs.room_id = r.id";
+            		$result = mysqli_query($conn_hotel, $query);
+                // fetch result in array format
+                $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                mysqli_free_result($result);
+                mysqli_close($conn_hotel);
+              ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -18,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.html"); ?>
+        <?php include("includes/navbar.php"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -74,33 +85,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col">
                         <div class="card ">
                           
                          <div class="card-body">
                                 
-                           <h5>Live room Status</h5>    
-                            <div class="card-deck">
+                      
+                                    <h4 class="header-title mb-3">Live Rooms Status</h4>
 
-
-  <div class="card text-white bg-success ">
-    <div class="card-body">
-      <b class="card-text">Room no</b>
-      <p class="card-text">Room type</p>
-      <p class="card-text">Room Availability</p>
-    </div>
-  </div>
-  <div class="card text-white bg-success">
-    <div class="card-body">
-      <b class="card-text">Room no</b>
-      <p class="card-text">Room type</p>
-      <p class="card-text">Room Availability</p>
-    </div>
-  </div>
-</div>
-
+                                     <div class="grid-structure">
+                                        <div class="row">
+                                                                                       
+                                            <div class="col-lg-12 col-md-6">
+                                             <div class="grid-container">
+                                             <?php foreach($users as $user): ?>
+                            
+   
+                            <div class="card text-white bg-dark ">
+                              <div class="card-body">
+                                
+                                <b class="card-text"><?php echo $user['room_no']; ?></b>
+                                <p class="card-text"><?php echo $user['room_type']; ?></p>
+                                <p class="card-text"><?php echo $user['is_checkout'] == 1 ? "Available" : "Booked"?></p>
+                              </div>
                             </div>
-                            <!-- /.card-body -->
+                            <?php endforeach; ?>
+                                                 
+                                                                                       
+                                         
+                                </div>
                         </div>
                         <!-- /.card -->
                       

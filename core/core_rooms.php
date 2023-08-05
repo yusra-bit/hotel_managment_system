@@ -116,9 +116,10 @@ $no =1;
             <thead>
                 <tr>
                
-  <th>#</th>
-				    <th>Room Type</th>
+                    <th>#</th>
                     <th>Room No</th>
+				    <th>Room Type</th>
+                    
                     <th>Description</th> 
                     <th>Price </th>
              
@@ -134,9 +135,8 @@ $no =1;
             print '
 				<tr>                    
                 <td>'.$no++.'</td>
-
+                <td>' . $row["room_no"] .'</td>
                     <td>'.$row['room_type'].'</td>
-					<td>' . $row["room_no"] .'</td>
 					<td>' . $row["description"] .'</td>
                     <td>' .$row['price'].'</td>
                 

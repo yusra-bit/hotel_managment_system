@@ -14,14 +14,15 @@ if (isset($_POST['save'])) {
     // merchant information
    
     $customer_id = $_POST['customer_id'];
-    $room_no = $_POST['room_no'];
+    $room_no = $_POST['room_id'];
     $booking_date = $_POST['booking_date'];
     $no_people = $_POST['no_people'];
     $description = $_POST['description'];
+    $is_checkout = 0;
 
     
 
-    $query = "INSERT INTO reservation(customer_id, room_id, booking_date, no_people, description,is_checkout) VALUES (?,?,?,?,?,0)";
+    $query = "INSERT INTO reservation (customer_id, room_id, booking_date, no_people, description,is_checkout) VALUES (?,?,?,?,?,?)";
     /* Prepare statement */
     $stmt = $mysqli->prepare($query);
 
@@ -31,12 +32,13 @@ if (isset($_POST['save'])) {
 
     /* Bind parameters. TYpes: s = string, i = integer, d = double,  b = blob */
     $stmt->bind_param(
-        'iisss',
+        'iisssi',
         $customer_id,
     $room_no,
     $booking_date, 
     $no_people,
-    $description
+    $description,
+    $is_checkout
 
     );
 
@@ -45,6 +47,8 @@ if (isset($_POST['save'])) {
         //if saving success
        // $message = 'Customers added successfully!';
        // $message = '<div class="alert alert-success" role="alert">Room added successfully!</div>';
+
+       //updating CHECKOUT & CHECKIN HERE
         echo "checked in successfully!'";
     } else {
         //if unable to create new record
@@ -68,18 +72,16 @@ function getCheckin()
     }
 
     // the query
-   // $query = "SELECT * from student";
 $no =1;
-    $query = "SELECT r.id, t.room_type, r.room_no, t.price from room r 
-              INNER JOIN room_type t
-              ON r.room_type_id = t.id";
+   
+
+            $query ="SELECT r.id, r.room_no, rt.room_type, rt.price, ifnull(rs.is_checkout, 1) as is_checkout 
+            from room r 
+            inner JOIN room_type rt on rt.id = r.room_type_id 
+            left join reservation rs on rs.room_id = r.id";
               
               
-             // $checked = $conn->query("SELECT * FROM reservation where status = 0 order by status desc, id asc ");
-
-
-   // $query = "SELECT * FROM class cINNER JOIN teacher tON c.teacher_id = t.id";
-
+          
     // mysqli select query
     $results = $mysqli->query($query);
     // mysqli select query
@@ -94,6 +96,7 @@ $no =1;
 				    <th>Room No</th>
                     <th>Room Type</th>
                     <th>Price</th>
+                    <th>Status</th>
              
 
              
@@ -113,9 +116,11 @@ $no =1;
                     <td>'.$row['room_no'].'</td>
 					<td>'.$row["room_type"] .'</td>
                     <td>'. $row["price"].'</td>
+                    <td>'. ($row['is_checkout'] == 1 ? "Available" : "Booked") .'</td>
+
                 
                     <td class=" py-0 align-middle">
-                    <div class="btn-group btn-group-sm">
+                    <div class="btn-group btn-group-sm" '. ($row['is_checkout'] == 0 ? "hidden" : "").'> 
                         <a href="check_in.php?id='.$row['id'].'" class="btn btn-info">Check in</i></a>
                         
                     </div>
@@ -149,8 +154,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     }
 
     $room_id = $_GET['id'];
+
     // the query
-  
     $query = "SELECT r.id, t.room_type, r.room_no, t.price 
     FROM room r 
     INNER JOIN room_type t
@@ -162,8 +167,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
        $list = mysqli_fetch_array($results);
 
        extract($list);
-      // $room_type_id = $list['room_type'];
-     // $room_id = $list['id'];
+     
        $room_no = $list['room_no'];
        $room_type= $list['room_type'];
        

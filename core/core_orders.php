@@ -13,11 +13,11 @@ if (isset($_POST['save'])) {
     $customer_id = $_POST['customer_id'];
     $room_id = $_POST['room_id'];
     $type = $_POST['type'];
-    $price= $_POST['price'];
+    $price= $_POST['oprice'];
     $note= $_POST['note'];
 
 
-    $query = "INSERT INTO tbl_order (customer_id, room_id, type, price,note) VALUES (?,?,?,?,?)";
+    $query = "INSERT INTO tbl_order (customer_id, room_id, type, oprice,note) VALUES (?,?,?,?,?)";
 
      /* Prepare statement */
      $stmt = $mysqli->prepare($query);
@@ -103,7 +103,7 @@ function getOrders()
     // the query
    // $query = "SELECT * from student";
 $no =1;
-    $query = "SELECT o.id, c.full_name, r.room_no, o.type, o.price from tbl_order o
+    $query = "SELECT o.id, c.full_name, r.room_no, o.type, o.oprice from tbl_order o
              INNER JOIN customers_tbl c
              ON o.customer_id = c.id
              INNER JOIN room r
@@ -143,7 +143,7 @@ $no =1;
 					<td>' . $row["room_no"] .'</td>
                     <td>' . $row["type"] . '</td>
                    
-                    <td>' . $row["price"] . '</td>
+                    <td>' . $row["oprice"] . '</td>
                    
                     
 
@@ -193,7 +193,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
        $customer_id = $list['customer_id'];
        $room_id = $list['room_id'];
        $type = $list['type'];
-       $price = $list['price'];
+       $price = $list['oprice'];
        $note = $list['note'];
 
 
@@ -217,12 +217,12 @@ if (isset($_POST['update'])) {
     $customer_id = $_POST['customer_id'];
     $room_id = $_POST['room_id'];
     $type = $_POST['type'];
-    $price = $_POST['price'];
+    $price = $_POST['oprice'];
     $note = $_POST['note'];
 
     
 
-    $query = "UPDATE tbl_order set customer_id=?, room_id=?, type=?, price=?, note=? WHERE id=?";
+    $query = "UPDATE tbl_order set customer_id=?, room_id=?, type=?, oprice=?, note=? WHERE id=?";
     /* Prepare statement */
     $stmt = $mysqli->prepare($query);
 

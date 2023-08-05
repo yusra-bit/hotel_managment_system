@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="checkOut_list.php" class="nav-link">
                                 <i class="fa fa-address-card nav-icon"></i>
                                 <p>Booked</p>
                             </a>
@@ -70,9 +70,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="booking_history.php" class="nav-link">
                                 <i class="fa fa-calendar nav-icon"></i>
-                                <p>Checkout </p>
+                                <p>Booking History </p>
                             </a>
                         </li>
                         <li class="nav-item">
