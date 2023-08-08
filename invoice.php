@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Invoice</h4>
+                <h4 class="page-title">Checkout </h4>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="col-md-4 offset-md-2">
                         <div class="mt-3 float-right">
                             <p class="m-b-10"><strong>Invoice Date : </strong> <span class="float-right">
-                                    2023-08-05</span></p>
+                                   <?php echo $billing_date; ?></span></p>
                             <p class="m-b-10"><strong>Invoice Status : </strong> <span class="float-right"><span class="badge badge-success">Paid</span></span>
                             </p>
                             <p class="m-b-10"><strong>Invoice No. : </strong> <span class="float-right">INV1077 </span></p>
@@ -130,6 +130,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <td class="text-right"><?php echo $days ?></td>
                                         <td class="text-right"><?php echo $price; ?></td>
                                         <td class="text-right">$<?php echo $grand_total; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><b><?php echo $type; ?></b></td>
+                                        <td class="text-right"></td>
+                                        <td class="text-right"></td>
+                                        <td class="text-right">$<?php echo $orders; ?></td>
                                     </tr>
                                                                                     </tbody>
                             </table>

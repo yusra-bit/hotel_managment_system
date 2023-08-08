@@ -148,8 +148,7 @@ $no =1;
                     <td class=" py-0 align-middle">
                     <div class="btn-group btn-group-sm">
                         <a href="customers.php?id='.$row['id'].'" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                        <a href="customer_tbl.php?delete='.$row['id'].'" class="btn btn-danger"><i
-                                class="fas fa-trash"></i></a>
+                        <a href="customer_list.php?delete='.$row['id'].'" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
                     </td>

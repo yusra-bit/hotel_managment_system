@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="customer_id">customer</label>
-                                    <select name="customer_id" id='customer_id' class="form-control">
+                                    <select class="form-control" name="customer_id" id='customer_id'  required="required">
                                     <option selected>Select..</option>
                                     <?php
                                         $query="SELECT * FROM customers_tbl";
@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="room_id">room </label>
-                                    <select name="room_id" id='room_id' class="form-control">
+                                    <select  name="room_id" id='room_id' class="form-control" >
                                     <option selected>Select..</option>
                                     <?php
                                         $query="SELECT * FROM room";
@@ -94,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="form-group">
                                     <label for="type">order type </label>
-                                    <select name="type" id="type" class="form-control">
+                                    <select name="type" id="type" class="form-control" required>
                                     <option selected>Select order..</option>
 
                                         <option value="Food" <?php echo (isset($type) && $type == "Food" ? "selected" : "") ?> >Food</option>  

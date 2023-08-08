@@ -14,13 +14,13 @@ if (isset($_POST['save'])) {
     // merchant information
    
     $reservation = $_POST['reservation_id'];
-   // $customer_id = $_POST['customer_id'];
+    $customer_id = $_POST['customer_id'];
     $billing_type = $_POST['billing_type'];
     $grand_total = $_POST['total'];
   //  $billing_date = new DateTime();
     
 
-    $query = "INSERT INTO billing (reservation_id,billing_type,grand_total) VALUES (?,?,?)";
+    $query = "INSERT INTO billing (reservation_id,customer_id,billing_type,grand_total) VALUES (?,?,?,?)";
 
     /* Prepare statement */
     $stmt = $mysqli->prepare($query);
@@ -31,9 +31,9 @@ if (isset($_POST['save'])) {
 
     /* Bind parameters. TYpes: s = string, i = integer, d = double,  b = blob */
     $stmt->bind_param(
-        'isi',
+        'iisi',
         $reservation,
-      //  $customer_id,
+        $customer_id,
         $billing_type,
         $grand_total,
      //   $billing_date
@@ -41,17 +41,15 @@ if (isset($_POST['save'])) {
 
     //execute the query
     if ($stmt->execute()) {
-       // $room_id = NULL;
-       // $is_checkout = 0;
-       // $query1 = "UPDATE reservation set room_id=NULL,is_checkout=1 WHERE id=?";
+        $query1 = "UPDATE reservation SET room_id=NULL, is_checkout=1 WHERE id=?";
 
+        $stmt1 = $mysqli->prepare($query1);
+        $stmt1->bind_param('i', $reservation);
+        $stmt1->execute();
       
-   
-        //if saving success'
-       // $message = 'Customers added successfully!';
-       // $message = '<div class="alert alert-success" role="alert">Customers added successfully!</div>';
-     //  header('Location:invoice.php');
-        echo " added successfully!'";
+     //header("Location: invoice.php?id=$reservation");
+
+       echo " added successfully!'";
     } else {
         //if unable to create new record
         echo  'There has been an error, please try again.<pre>' . $mysqli->error . '</pre><pre>' . $query . '</pre>';
@@ -79,7 +77,7 @@ $no =1;
             FROM reservation AS v 
             LEFT JOIN room AS r ON r.id = v.room_id 
             inner JOIN room_type AS rt ON rt.id = r.room_type_id 
-            LEFT JOIN customers_tbl AS c ON c.id = v.customer_id;";
+            LEFT JOIN customers_tbl AS c ON c.id = v.customer_id WHERE is_checkout= 0";
     
               
           
@@ -144,8 +142,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $rid = $_GET['id'];
     // the query
-        $query = "SELECT rs.id, r.room_no, rt.price, rt.room_type,NOW(),CONVERT( rs.booking_date, DATE) AS booking_date,  DATEDIFF(NOW(), booking_date) * rt.price AS total ,DATEDIFF(NOW(), booking_date) AS days ,
-        c.full_name, c.mobile,c.email,c.id_card_no, c.discount, o.type, o.oprice
+        $query = "SELECT rs.id, r.room_no, rt.price, rt.room_type,NOW(),CONVERT( rs.booking_date, DATE) AS booking_date,  DATEDIFF(NOW(), booking_date) * rt.price AS total ,DATEDIFF(NOW(), booking_date) AS days, 
+        c.full_name, c.mobile,c.email,c.id_card_no, c.discount, o.type, o.oprice, c.id AS customer_id
            from room r 
            inner JOIN room_type rt on rt.id = r.room_type_id 
            left join reservation rs on rs.room_id = r.id
@@ -164,8 +162,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
        $discount = $list['discount'];
        $id_card = $list['id_card_no'];
        $booking_date = $list['booking_date'];
+       
        $days = $list['days'];
-
+       $customer_id = $list['customer_id'];
        $room_no = $list['room_no'];
        $room_type = $list['room_type'];
        $grand_total = $list['total'];

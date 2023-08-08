@@ -2,13 +2,29 @@
 
 $query ="SELECT r.id, r.room_no, rt.room_type, rt.price, ifnull(rs.is_checkout, 1) as is_checkout 
             from room r 
-            inner JOIN room_type rt on rt.id = r.room_type_id 
-            left join reservation rs on rs.room_id = r.id";
+            inner JOIN room_type rt 
+            on rt.id = r.room_type_id 
+            left join reservation rs 
+            on rs.room_id = r.id";
+            
             		$result = mysqli_query($conn_hotel, $query);
-                // fetch result in array format
                 $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 mysqli_free_result($result);
-                mysqli_close($conn_hotel);
+
+//$sql = "SELECT SUM(grand_total) AS total FROM `billing` WHERE CONVERT( billing_date, DATE) = CURDATE()";
+$sql = "SELECT SUM(grand_total)  AS total FROM `billing`";
+                    $rs = mysqli_query($conn_hotel, $sql);
+                    $row = mysqli_fetch_all($rs, MYSQLI_ASSOC);
+                    mysqli_free_result($rs); 
+                     
+
+$q = "SELECT COUNT(id) AS sales FROM `billing` WHERE CONVERT( billing_date, DATE) = CURDATE()";
+
+                $res = mysqli_query($conn_hotel, $q);
+                $as = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                mysqli_free_result($res);
+
+                      mysqli_close($conn_hotel);
               ?>
 <!DOCTYPE html>
 <!--
@@ -62,54 +78,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="card-content">
           <div class="card-body cleartfix">
             <div class="media align-items-stretch">
+
               <div class="align-self-center">
                 <i class="icon-wallet primary font-large-2 mr-2"></i>
               </div>
               <div class="media-body">
-               
               </div>
               <div class="align-self-center">
-                <h1>18,000</h1> 
+                  <?php foreach($row as $r): ?>
+                    <h1><?php echo $r['total']; ?>$</h1>              
+                  <?php endforeach; ?>
+
                 <span>Total Revenue</span>
               </div>
+
             </div>
+            
           </div>
         </div>
       </div>
     </div>
+    <div class="col-xl-6 col-md-12">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+
+              <div class="align-self-center">
+              <i class="icon-pencil primary font-large-2 mr-2"></i>
+              </div>
+              <div class="media-body">
+              </div>
+              <div class="align-self-center">
+                  <?php foreach($as as $a): ?>
+                    <h1><?php echo $a['sales']; ?></h1>              
+                  <?php endforeach; ?>
+                  
+
+                <span>Today's Sales</span>
+              </div>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
 
   </div>
 
 </section>
 </div>
             <!-- Main content -->
-            <section class="content">
                 <div class="row">
                     <div class="col">
                         <div class="card ">
-                          
                          <div class="card-body">
-                                
-                      
-                                    <h4 class="header-title mb-3">Live Rooms Status</h4>
+                          <h4 class="header-title mb-3">Live Rooms Status</h4>
+                          <div class="container">
+                              <div class="row">
+                              <?php foreach($users as $user): ?>
 
-                                     <div class="grid-structure">
-                                        <div class="row">
-                                                                                       
-                                            <div class="col-lg-12 col-md-6">
-                                             <div class="grid-container">
-                                             <?php foreach($users as $user): ?>
-                            
-   
-                            <div class="card text-white bg-dark ">
+                                  <div class="col-lg-4">
+                                  <div class="card bg-<?php echo $user['is_checkout'] == 1 ? 'success' : 'danger' ?>">
+
+                           
+                                    
                               <div class="card-body">
-                                
                                 <b class="card-text"><?php echo $user['room_no']; ?></b>
                                 <p class="card-text"><?php echo $user['room_type']; ?></p>
                                 <p class="card-text"><?php echo $user['is_checkout'] == 1 ? "Available" : "Booked"?></p>
                               </div>
                             </div>
-                            <?php endforeach; ?>
+                                  </div>
+                                  <?php endforeach; ?>
+                              </div>
+                          </div>
+  
+                                    
                                                  
                                                                                        
                                          
@@ -148,3 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 
 </html>
+
+
+
+

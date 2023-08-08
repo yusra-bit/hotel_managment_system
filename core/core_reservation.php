@@ -44,12 +44,8 @@ if (isset($_POST['save'])) {
 
     //execute the query
     if ($stmt->execute()) {
-        //if saving success
-       // $message = 'Customers added successfully!';
-       // $message = '<div class="alert alert-success" role="alert">Room added successfully!</div>';
+        header("Location: booking_history.php");
 
-       //updating CHECKOUT & CHECKIN HERE
-        echo "checked in successfully!'";
     } else {
         //if unable to create new record
         echo  'There has been an error, please try again.<pre>' . $mysqli->error . '</pre><pre>' . $query . '</pre>';

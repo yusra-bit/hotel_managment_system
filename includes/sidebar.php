@@ -76,9 +76,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="checkout_history.php" class="nav-link">
                                 <i class="fa fa-shopping-cart nav-icon"></i>
-                                <p>Check-in</p>
+                                <p>CheckOut</p>
                             </a>
                         </li>
                        

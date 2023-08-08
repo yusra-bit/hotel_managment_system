@@ -1,4 +1,4 @@
-<?php include("core/core_checkOut.php"); ?>
+<?php include("core/core_checkoutHistory.php"); ?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hotel Management System</title>
+    <title>AdminLTE 3 | Starter</title>
 
     <?php include("includes/header.html"); ?>
 </head>
@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <?php include("includes/navbar.php"); ?>
+        <?php include("includes/navbar.html"); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>CheckOut </h1>
+                            <h1>Checkout History</h1>
                         </div>
                         
                     </div>
@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                    
                             <br>
                              
-                                    <?php getCheckOut(); ?>
+                                    <?php getCheckoutHistory(); ?>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

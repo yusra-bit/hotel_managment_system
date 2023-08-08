@@ -131,6 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <div class="form-group">
                                                         <label for="billing-first-name">Customer
                                                             Name</label>
+                                                            <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?> ">
 
                                                             <input type="hidden" name="reservation_id" value="<?php echo $rid ?> ">
                                                             <input class="form-control" type="text" name="full_name" placeholder="Enter your first name" value="<?php echo (isset($full_name) ? $full_name : "") ?>">
@@ -166,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="col-12">
                                                 <div class="form-group">
                                                         <label for="billing_type">Billing Type</label>
-                                                        <select name="billing_type" class="form-control" required>
+                                                        <select name="billing_type" class="form-control">
                                                         <option selected> Select Payment Type</option>
                                                             <option value="ZAAD"> Zaad</option>
                                                             <option value="CASH"> Cash</option>

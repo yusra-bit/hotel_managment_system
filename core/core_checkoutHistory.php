@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
     //close database connection
     $mysqli->close();
 }
-function getBookingHistory()
+function getCheckoutHistory()
 {
 
     // Connect to the database
@@ -53,11 +53,16 @@ function getBookingHistory()
 $no =1;
    
 
-            $query =" SELECT rs.id, r.room_no, rt.price, rt.room_type,CONVERT( rs.booking_date, DATE) AS booking_date, c.full_name, c.mobile
-            from room r 
-            inner JOIN room_type rt on rt.id = r.room_type_id 
-            left join reservation rs on rs.room_id = r.id
-            inner join customers_tbl c on c.id = rs.customer_id WHERE is_checkout =0";
+            $query ="SELECT c.full_name,c.mobile, ro.room_no, rt.room_type, rt.price,CONVERT( r.booking_date, DATE) AS booking_date
+            FROM billing b 
+            INNER JOIN reservation r 
+            ON b.reservation_id = r.id
+            INNER JOIN room ro
+            ON ro.id = r.room_id
+            INNER JOIN room_type rt 
+            ON rt.id = ro.room_type_id
+            INNER JOIN customers_tbl c
+            ON  r.customer_id=c.id;";
     
               
           
@@ -98,8 +103,7 @@ $no =1;
                     <td>'. $row["booking_date"].'</td>
                     <td class=" py-0 align-middle">
                     <div class="btn-group btn-group-sm">
-                        <a href="booking_edit.php?id='.$row['id'].'" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                        <a href="booking_history.php?delete='.$row['id'].'" class="btn btn-danger"><i
+                        <a href="checkout_history.php?delete='.$row['id'].'" class="btn btn-danger"><i
                                 class="fas fa-trash"></i></a>
                     </div>
                 </td>
